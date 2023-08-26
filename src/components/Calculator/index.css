@@ -1,24 +1,60 @@
+@font-face {
+	font-family: 'DigitalDream';
+	src: url('../../font/DIGITALDREAMFAT.ttf') format('truetype');
+}
 .calculator {
 	background-color: #bce27f;
 	width: 350px;
-	height: 490px;
+	height: 550px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	border-radius: 20px;
+	border: 2px solid rgb(113, 136, 76);
 	-webkit-box-shadow: 0px 16px 0px 0px rgba(147, 177, 99, 1);
 	-moz-box-shadow: 0px 16px 0px 0px rgba(147, 177, 99, 1);
 	box-shadow: 0px 16px 0px 0px rgba(147, 177, 99, 1);
 }
 
 .calculator__monitor {
-	background-color: grey;
+	background-color: #72745a;
 	width: 280px;
 	height: 100px;
 	margin-bottom: 20px;
 	border: 4px solid black;
 	border-radius: 10px;
+	display: flex;
+
+	justify-content: right;
+	align-items: center;
+	-webkit-box-shadow: inset 0px 0px 7px 1px rgba(0, 0, 0, 1);
+	-moz-box-shadow: inset 0px 0px 7px 1px rgba(0, 0, 0, 1);
+	box-shadow: inset 0px 0px 7px 1px rgba(0, 0, 0, 1);
+}
+.calculator__monitor__calculations {
+	font-family: 'DigitalDream';
+	margin-right: 12px;
+}
+.calculator__delateButtons {
+	margin-bottom: 20px;
+	gap: 20px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.calculator__CEButton,
+.calculator__CButton {
+	width: 130px;
+	height: 45px;
+	text-align: center;
+	border: 0.5px solid rgb(146, 146, 146);
+	border-radius: 10px;
+	background-color: rgb(255, 38, 38);
+	border: 1px solid rgb(253, 0, 0);
+	-webkit-box-shadow: 0px 7px 0px 0px rgba(118, 118, 118, 1);
+	-moz-box-shadow: 0px 7px 0px 0px rgba(118, 118, 118, 1);
+	box-shadow: 0px 7px 0px 0px rgba(118, 118, 118, 1);
 }
 
 .calculator__buttonsConteiner {
@@ -36,16 +72,16 @@
 	text-align: center;
 	border: 0.5px solid rgb(146, 146, 146);
 	border-radius: 20%;
-	background-color: white;
 	color: black;
-	-webkit-box-shadow: 0px 15px 0px 0px rgba(118, 118, 118, 1);
-	-moz-box-shadow: 0px 15px 0px 0px rgba(118, 118, 118, 1);
-	box-shadow: 0px 15px 0px 0px rgba(118, 118, 118, 1);
+	-webkit-box-shadow: 0px 7px 0px 0px rgba(118, 118, 118, 1);
+	-moz-box-shadow: 0px 7px 0px 0px rgba(118, 118, 118, 1);
+	box-shadow: 0px 7px 0px 0px rgba(118, 118, 118, 1);
 }
-
+.calculator__CEButton:active,
+.calculator__CButton:active,
 .calculator__button:active {
 	-webkit-box-shadow: 0px 0px 0px 0px rgba(118, 118, 118, 1);
 	-moz-box-shadow: 0px 0px 0px 0px rgba(118, 118, 118, 1);
 	box-shadow: 0px 0px 0px 0px rgba(118, 118, 118, 1);
-	transform: translateY(15px);
+	transform: translateY(7px);
 }
