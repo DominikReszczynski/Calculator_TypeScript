@@ -9,7 +9,7 @@ export const Calculator = () => {
 	console.clear();
 	const [getCalculation, setCalculation] = useState<string>('');
 	const addOnDisplay = (char: string): string | void => {
-		if ((getCalculation + char).length > 17) {
+		if ((getCalculation + char).length > 11) {
 			console.log('jestem w funkcji blokującej ');
 			return getCalculation;
 		}
