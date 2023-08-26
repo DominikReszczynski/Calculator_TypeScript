@@ -6,14 +6,14 @@ type CalculatorButtonsType = {
 	onClick: () => void;
 };
 export const Calculator = () => {
-	console.clear();
-	const [getCalculation, setCalculation] = useState<string>('');
+	const [getNumberOnDisplay, setNumberOnDisplay] = useState<string>('');
+	const [getCalculation, setCalculation] = useState<string[]>([]);
 	const addOnDisplay = (char: string): string | void => {
-		if ((getCalculation + char).length > 11) {
+		if ((getNumberOnDisplay + char).length > 11) {
 			console.log('jestem w funkcji blokującej ');
-			return getCalculation;
+			return getNumberOnDisplay;
 		}
-		return setCalculation(getCalculation + char);
+		return setNumberOnDisplay(getNumberOnDisplay + char);
 	};
 	const calculatorButtons: CalculatorButtonsType[] = [
 		{
@@ -41,7 +41,9 @@ export const Calculator = () => {
 			name: '÷',
 			onClick: () => {
 				console.log('Kliknięto przycisk ÷');
-				addOnDisplay('÷');
+				const append = [...getCalculation, getNumberOnDisplay, '/'];
+				setCalculation(append);
+				setNumberOnDisplay('');
 			},
 		},
 		{
@@ -69,7 +71,9 @@ export const Calculator = () => {
 			name: 'X',
 			onClick: () => {
 				console.log('Kliknięto przycisk X');
-				addOnDisplay('X');
+				const append = [...getCalculation, getNumberOnDisplay, 'X'];
+				setCalculation(append);
+				setNumberOnDisplay('');
 			},
 		},
 		{
@@ -97,7 +101,9 @@ export const Calculator = () => {
 			name: '-',
 			onClick: () => {
 				console.log('Kliknięto przycisk -');
-				addOnDisplay('-');
+				const append = [...getCalculation, getNumberOnDisplay, '-'];
+				setCalculation(append);
+				setNumberOnDisplay('');
 			},
 		},
 		{
@@ -111,36 +117,46 @@ export const Calculator = () => {
 			name: '.',
 			onClick: () => {
 				console.log('Kliknięto przycisk .');
-				addOnDisplay('.');
+				//todo
+				// const append = [...getCalculation, getNumberOnDisplay, 'X'];
+				// setCalculation(append);
+				// setNumberOnDisplay('');
 			},
 		},
 		{
 			name: '+',
 			onClick: () => {
 				console.log('Kliknięto przycisk +');
-				addOnDisplay('+');
+				const append = [...getCalculation, getNumberOnDisplay, '+'];
+				setCalculation(append);
+				setNumberOnDisplay('');
 			},
 		},
 		{
 			name: '=',
 			onClick: () => {
 				console.log('Kliknięto przycisk =');
-				addOnDisplay('=');
+				//todo
+				// const append = [...getCalculation, getNumberOnDisplay, 'X'];
+				// setCalculation(append);
+				// setNumberOnDisplay('');
 			},
 		},
 	];
-	console.log(getCalculation + 'dabdab');
+	console.log(getCalculation);
 	return (
 		<div className='calculator'>
 			<div className='calculator__monitor'>
-				<h3 className='calculator__monitor__calculations'>{getCalculation}</h3>
+				<h3 className='calculator__monitor__calculations'>
+					{getNumberOnDisplay}
+				</h3>
 			</div>
 			<div className='calculator__delateButtons'>
 				<button
 					className='calculator__CEButton'
 					onClick={() => {
 						console.log('usuwam wszystko');
-						setCalculation('');
+						setNumberOnDisplay('');
 					}}
 				>
 					CE
@@ -149,7 +165,7 @@ export const Calculator = () => {
 					className='calculator__CButton'
 					onClick={() => {
 						console.log('usuwam ostatni znak');
-						setCalculation(getCalculation.slice(0, -1));
+						setNumberOnDisplay(getNumberOnDisplay.slice(0, -1));
 					}}
 				>
 					C
