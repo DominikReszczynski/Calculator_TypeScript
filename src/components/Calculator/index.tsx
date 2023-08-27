@@ -6,6 +6,7 @@ import { CalculationHistory } from './calculationHistory/calculationHistory';
 import { MainButtons } from './mainButtons/mainButtons';
 
 export const Calculator = () => {
+	console.clear;
 	const [getNumberOnDisplay, setNumberOnDisplay] = useState<string>('');
 	const [getCalculation, setCalculation] = useState<string[]>([]);
 	const [historyElement, setHistoryElement] = useState<string[]>([]);
