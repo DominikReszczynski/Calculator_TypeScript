@@ -9,7 +9,7 @@ type CalculatorButtonsType = {
 export const Calculator = () => {
 	const [getNumberOnDisplay, setNumberOnDisplay] = useState<string>('');
 	const [getCalculation, setCalculation] = useState<string[]>([]);
-	const [result, setResult] = useState<number>();
+	const [result, setResult] = useState<number | null>(null);
 	const [historyElement, setHistoryElement] = useState<string>('');
 	const addOnDisplay = (char: string): string | void => {
 		if ((getNumberOnDisplay + char).length > 11) {
@@ -26,7 +26,7 @@ export const Calculator = () => {
 		);
 		if (getCalculation.length === 3) {
 			const [num1, operator, num2] = getCalculation;
-			let calculatedResult;
+			let calculatedResult: number | undefined;
 
 			switch (operator) {
 				case '+':
@@ -42,10 +42,12 @@ export const Calculator = () => {
 					calculatedResult = Number(num1) / Number(num2);
 					break;
 				default:
-					calculatedResult = null;
+					calculatedResult = undefined;
 			}
 
 			setResult(calculatedResult);
+			setCalculation([]);
+			setNumberOnDisplay('');
 		}
 	};
 	const calculatorButtons: CalculatorButtonsType[] = [
@@ -191,18 +193,20 @@ export const Calculator = () => {
 			disabled: false,
 		},
 	];
-	// console.log(getCalculation);
-	// console.log(calculatorButtons);
-	// console.log(calculatorButtons[0]);
-	// calculatorButtons[0].name = 'nana';
-	// console.log(calculatorButtons[0]);
+	useEffect(() => {
+		setTimeout(() => {
+			if (getCalculation.length < 1) {
+				setResult(null);
+			}
+		}, 1000);
+	}, [getNumberOnDisplay]);
 	console.log('result: ' + result);
 	return (
 		<div className='calculator'>
-			{result}
 			<div className='calculator__monitor'>
 				<h3 className='calculator__monitor__calculations'>
 					{getNumberOnDisplay}
+					{result !== null && result}
 				</h3>
 			</div>
 			<div className='calculator__delateButtons'>
