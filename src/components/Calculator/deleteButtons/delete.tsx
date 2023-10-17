@@ -1,5 +1,10 @@
+import React from 'react';
 import './delete.css';
-export const DeleteButtons = ({ setNumberOnDisplay, getNumberOnDisplay }) => {
+interface deleteInterface {
+	setNumberOnDisplay:React.Dispatch<React.SetStateAction<string>>, 
+	getNumberOnDisplay: string
+}
+export const DeleteButtons: React.FC<deleteInterface> = ({ setNumberOnDisplay, getNumberOnDisplay }) => {
 	return (
 		<div className='calculator__delateButtons'>
 			<button
